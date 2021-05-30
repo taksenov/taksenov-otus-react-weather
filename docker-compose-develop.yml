@@ -1,0 +1,125 @@
+# Девелоп
+# IDEA: 03-01-2020 Визуально сервер можно открыть по адресу https://dev-in.letspack.ru/ . Требуется настройка DNS агента.
+# IDEA: 27-09-2019 Переделан docker-compose на новую версию,
+# в которой запускаются все контейнеры в своей сети, но монга смотрит своим портом наружу
+# IDEA: 09-10-2019 добавлена сборка frontend сервера на cra, который крутится на 3000 порту
+# и поддерживает пересборку по сохранению файлов в проекте
+# Визуально сервер по прежнему открывается через http://127.0.0.1:80/
+
+# IDEA: 25-05-2020 на macOS докер работает через жопу, поэтому или линукс или машина с линуксом, к которой macОS подключается как клиент по sshfs
+
+# команда запуска
+# docker-compose -f docker-compose-develop.yml build
+# docker-compose -f docker-compose-develop.yml up
+# docker-compose -f docker-compose-develop.yml ps
+# docker-compose -f docker-compose-develop.yml down
+
+# IDEA: Если обновится версия node-sass, то образ `linux-x64-72` нужно скачать из релиза этой версии с GitHub
+# Ссылка: https://github.com/sass/node-sass/releases
+# IDEA: ВНИМАНИЕ! Если запускается на машине с Windows, MacOS
+# то нужно скопировать из ./client/temp/* --> ./client/node_modules/node-sass/vendor/*
+# Команда копирования `cp -r ./client/temp/linux-x64-83/ ./client/node_modules/node-sass/vendor/`
+# Иначе ругнется на различные сборки OS для node-sass
+
+# Очистка не используемых контейнеров
+# docker image prune -a --filter "until=24h"
+
+# Очистка не используемых volumes
+# docker volume prune
+
+# IDEA: 31-01-2020
+# Создать дамп данных
+# команда запуска
+# docker exec lpc-mongodb sh -c 'exec mongodump -d lpcdb --out /lpc_dump/'
+#
+# Восстановить данные из бекапа
+# команда запуска
+# docker exec lpc-mongodb sh -c 'mongorestore -v -d lpcdb /lpc_dump/lpcdb/'
+
+# IDEA: 05-03-2020
+# Если нужно перезагрузить отдельный сервис, не трогая всю сеть.
+# Например ноду
+# Подключаемся к ноде
+# docker-compose -f docker-compose-develop.yml up nodejs
+# Ctrl+C
+# ```
+# $ docker-compose -f docker-compose-develop.yml ps
+#      Name                    Command                State                           Ports
+# ----------------------------------------------------------------------------------------------------------------
+# lpc-mongodb       docker-entrypoint.sh mongod      Up         0.0.0.0:27017->27017/tcp
+# lpc-nginx         nginx -g daemon off;             Up         0.0.0.0:443->443/tcp, 80/tcp, 0.0.0.0:80->8077/tcp
+# lpc-node-server   docker-entrypoint.sh node  ...   Exit 137
+# lpc-web           docker-entrypoint.sh yarn  ...   Up         0.0.0.0:3000->3000/tcp
+# ```
+# Перезапускаем сервис, с перебилдом
+#  docker-compose -f docker-compose-develop.yml up --build nodejs
+
+version: '3'
+
+services:
+  nodejs:
+    container_name: lpc-node-server
+    build: server/
+    command: node ./src/start.js
+    restart: always
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mongo
+    environment:
+      - DB_HOST=mongo
+    volumes:
+      - '../lpc_images:/home/lpc_images'
+
+  mongo:
+    image: mongo:4.2.0
+    container_name: lpc-mongodb
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodata:/data/db
+      - '../lpc_db_dump:/lpc_dump'
+    command: mongod
+
+  web:
+    container_name: lpc-web
+    # IDEA: workaround for cra@3.4.1
+    stdin_open: true
+    # tty: true
+    build: client/
+    expose:
+      - 3000
+    command: yarn start-dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client:/app:rw
+      - node_modules:/src/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - CI=true
+    depends_on:
+      - nodejs
+      - mongo
+
+  nginx:
+    container_name: lpc-nginx
+    build: nginx/
+    ports:
+      - '80:8077'
+      - '443:443'
+    depends_on:
+      - web
+      - mongo
+      - nodejs
+    volumes:
+      - './nginx/nginx-develop.conf:/etc/nginx/conf.d/default.conf:ro'
+      - '../lpc_nginx_logs:/var/logs'
+      - './nginx/ssl:/etc/nginx/ssl'
+      - '../lpc_images:/home/lpc_images'
+
+volumes:
+  node_modules:
+  mongodata:
