@@ -5,68 +5,62 @@ const initData = { data: [] };
 
 // Actions ==========================
 
-const ARTICLES = 'ARTICLES';
+const CITIES = 'CITIES';
 
 // Запрос информации из АПИ
-export const citiesRequest = createAction(`${ARTICLES}/REQUEST`);
-export const citiesSuccess = createAction(`${ARTICLES}/SUCCESS`);
-export const citiesFailure = createAction(`${ARTICLES}/FAILURE`);
+export const citiesRequest = createAction(`${CITIES}/REQUEST`);
+export const citiesSuccess = createAction(`${CITIES}/SUCCESS`);
+export const citiesFailure = createAction(`${CITIES}/FAILURE`);
 
 // Запрос информации из АПИ
-export const citiesFilteredRequest = createAction(
-  `${ARTICLES}/FILTERED_REQUEST`,
-);
-export const citiesFilteredSuccess = createAction(
-  `${ARTICLES}/FILTERED_SUCCESS`,
-);
-export const citiesFilteredFailure = createAction(
-  `${ARTICLES}/FILTERED_FAILURE`,
-);
+export const citiesFilteredRequest = createAction(`${CITIES}/FILTERED_REQUEST`);
+export const citiesFilteredSuccess = createAction(`${CITIES}/FILTERED_SUCCESS`);
+export const citiesFilteredFailure = createAction(`${CITIES}/FILTERED_FAILURE`);
 
 // Запрос информации из АПИ
-export const citiesCityRequest = createAction(`${ARTICLES}/ARTICLE_REQUEST`);
-export const citiesCitySuccess = createAction(`${ARTICLES}/ARTICLE_SUCCESS`);
-export const citiesCityFailure = createAction(`${ARTICLES}/ARTICLE_FAILURE`);
+export const citiesCityRequest = createAction(`${CITIES}/ARTICLE_REQUEST`);
+export const citiesCitySuccess = createAction(`${CITIES}/ARTICLE_SUCCESS`);
+export const citiesCityFailure = createAction(`${CITIES}/ARTICLE_FAILURE`);
 
 // Запрос информации из АПИ
 export const citiesCategoriesRequest = createAction(
-  `${ARTICLES}/CATEGORIES_REQUEST`,
+  `${CITIES}/CATEGORIES_REQUEST`,
 );
 export const citiesCategoriesSuccess = createAction(
-  `${ARTICLES}/CATEGORIES_SUCCESS`,
+  `${CITIES}/CATEGORIES_SUCCESS`,
 );
 export const citiesCategoriesFailure = createAction(
-  `${ARTICLES}/CATEGORIES_FAILURE`,
+  `${CITIES}/CATEGORIES_FAILURE`,
 );
 
 // Результат запроса
-export const citiesResult = createAction(`${ARTICLES}/RESULT`);
+export const citiesResult = createAction(`${CITIES}/RESULT`);
 
 // Результат запроса отфильтрованных статей
-export const citiesFilteredResult = createAction(`${ARTICLES}/FILTERED_RESULT`);
+export const citiesFilteredResult = createAction(`${CITIES}/FILTERED_RESULT`);
 
 // Результат запроса данных одной статьи
-export const citiesCityResult = createAction(`${ARTICLES}/ARTICLE_RESULT`);
+export const citiesCityResult = createAction(`${CITIES}/ARTICLE_RESULT`);
 
 // Результат запроса данных категорий
 export const citiesCategoriesResult = createAction(
-  `${ARTICLES}/CATEGORIES_RESULT`,
+  `${CITIES}/CATEGORIES_RESULT`,
 );
 
 // Запрос данных при скроллинге
-export const citiesSecondRequest = createAction(`${ARTICLES}/SECOND_REQUEST`);
+export const citiesSecondRequest = createAction(`${CITIES}/SECOND_REQUEST`);
 
 // Результат запроса при скроллинге
-export const citiesSecondResult = createAction(`${ARTICLES}/SECOND_RESULT`);
+export const citiesSecondResult = createAction(`${CITIES}/SECOND_RESULT`);
 
 // Запрос данных при скроллинге
 export const citiesSecondFilteredRequest = createAction(
-  `${ARTICLES}/SECOND_FILTERED_REQUEST`,
+  `${CITIES}/SECOND_FILTERED_REQUEST`,
 );
 
 // Результат запроса при скроллинге
 export const citiesSecondFilteredResult = createAction(
-  `${ARTICLES}/SECOND_FILTERED_RESULT`,
+  `${CITIES}/SECOND_FILTERED_RESULT`,
 );
 
 // Reducers ==========================
@@ -112,7 +106,7 @@ const isFetchingSecond = createReducer(false, {
 });
 
 // Статус запроса данных из АПИ
-const isFetchingArticle = createReducer(false, {
+const isFetchingCity = createReducer(false, {
   [citiesCityRequest.toString()]: () => true,
   [citiesCityResult.toString()]: () => false,
   [citiesCitySuccess.toString()]: () => false,
@@ -143,7 +137,7 @@ const data = createReducer(
 );
 
 // Данные со статьями
-const dataArticle = createReducer(
+const dataCity = createReducer(
   {},
   {
     [citiesCityRequest.toString()]: (state = {}) => ({ ...state }),
@@ -171,7 +165,7 @@ const result = createReducer(
 
 // Результат запроса данных статьи из АПИ
 // (содержит монаду либо с успешным результатом, либо с ошибкой)
-const resultArticle = createReducer(
+const resultCity = createReducer(
   {},
   {
     [citiesCityRequest.toString()]: () => ({}),
@@ -195,10 +189,10 @@ const reducer = combineReducers({
   data,
   result,
   isFetchingSecond,
-  isFetchingArticle,
-  dataArticle,
+  isFetchingCity,
+  dataCity,
   isAlreadyChashed,
-  resultArticle,
+  resultCity,
   resultCategories,
   isFetchingCategories,
 });

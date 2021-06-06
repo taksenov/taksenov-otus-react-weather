@@ -1,1 +1,0 @@
-export { SliderStyled } from './styles';

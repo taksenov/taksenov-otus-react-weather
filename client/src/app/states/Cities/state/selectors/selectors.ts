@@ -7,9 +7,9 @@ export const isFetching = (store: any) => store.citiesReducer.isFetching;
 export const isFetchingSecond = (store: any) =>
   store.citiesReducer.isFetchingSecond;
 
-export const resultArticle = createSelector(
-  (store: any) => store.citiesReducer.resultArticle,
-  resultArticle => resultArticle,
+export const resultCity = createSelector(
+  (store: any) => store.citiesReducer.resultCity,
+  resultCity => resultCity,
 );
 
 export const result = createSelector(
@@ -56,12 +56,12 @@ export const citiesList = createSelector(data, (data = {}) => {
   return result;
 });
 
-export const isFetchingArticle = (store: any) =>
-  store.citiesReducer.isFetchingArticle;
+export const isFetchingCity = (store: any) =>
+  store.citiesReducer.isFetchingCity;
 
-export const dataArticle = createSelector(
-  (store: any) => store.citiesReducer.dataArticle,
-  dataArticle => dataArticle,
+export const dataCity = createSelector(
+  (store: any) => store.citiesReducer.dataCity,
+  dataCity => dataCity,
 );
 
 export const isAlreadyChashed = (store: any) =>

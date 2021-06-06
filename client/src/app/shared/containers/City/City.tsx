@@ -16,9 +16,9 @@ import { useWindowSize } from '../../hooks/useWindowSize';
 
 import { citiesCityRequest } from '../../../states/Cities/state/duck';
 import {
-  isFetchingArticle as isFetchingArticleSelector,
-  dataArticle as dataArticleSelector,
-  resultArticle as resultArticleSelector,
+  isFetchingCity as isFetchingCitySelector,
+  dataCity as dataCitySelector,
+  resultCity as resultCitySelector,
   isFetchingCategories as isFetchingCategoriesSelector,
 } from '../../../states/Cities/state/selectors';
 
@@ -49,16 +49,20 @@ const City: React.FC<any> = props => {
   const { ID = -1 } = params;
 
   const dispatch = useDispatch();
-  const isFetchingArticle = useSelector(isFetchingArticleSelector);
-  const dataArticle = useSelector(dataArticleSelector);
-  const resultArticle = useSelector(resultArticleSelector);
+  const isFetchingCity = useSelector(isFetchingCitySelector);
+  const dataCity = useSelector(dataCitySelector);
+  const resultCity = useSelector(resultCitySelector);
   const isFetchingCategories = useSelector(isFetchingCategoriesSelector);
 
   const [state, setState] = React.useState(initState);
   const { cityID, dataCityState, errorForceRedirect, resultCategoriesState } =
     state;
-  const currentArticle = get(dataCityState, `${cityID}`, {}) || {};
-  const { date, h1 = '', desc = '', content = '' } = currentArticle;
+  const currentCity = get(dataCityState, `${cityID}`, {}) || {};
+  const { date, name = '' } = currentCity;
+  const temperature = currentCity?.main?.temp ?? '';
+  const feelsLike = currentCity?.main?.feels_like ?? '';
+  const pressure = currentCity?.main?.pressure ?? '';
+  const humidity = currentCity?.main?.humidity ?? '';
 
   const formatted = get(date, 'formatted', '') || '';
 
@@ -74,9 +78,9 @@ const City: React.FC<any> = props => {
   React.useEffect(() => {
     setState(prevState => ({
       ...prevState,
-      dataCityState: dataArticle,
+      dataCityState: dataCity,
     }));
-  }, [dataArticle]);
+  }, [dataCity]);
 
   // Проверить ID статьи, если ее нет в кеше, то загрузить с бекенда
   React.useEffect(() => {
@@ -96,28 +100,21 @@ const City: React.FC<any> = props => {
 
   // Проверить результат на наличие ошибок
   React.useEffect(() => {
-    if (E.isLeft(resultArticle)) {
+    if (E.isLeft(resultCity)) {
       setState(prevState => ({
         ...prevState,
         errorForceRedirect: true,
       }));
     }
-  }, [resultArticle]);
+  }, [resultCity]);
 
   const windowSize = useWindowSize();
   const { width = 0 } = windowSize;
 
-  // По умолчанию считаем что запущено на десктопе, мобила = false
   let isMobile = false;
 
   if (width < DEVICE_NETBOOKS_WIDTH) {
     isMobile = true;
-  }
-
-  function createMarkup() {
-    return {
-      __html: content,
-    };
   }
 
   if (errorForceRedirect) {
@@ -126,7 +123,7 @@ const City: React.FC<any> = props => {
 
   return (
     <>
-      {isFetchingArticle ? (
+      {isFetchingCity ? (
         <div
           style={{
             display: 'flex',
@@ -143,7 +140,7 @@ const City: React.FC<any> = props => {
             <Link to={`${CITIES_URL}`}>
               <img src={arrowLeftImage} alt="Back" width={24} height={24} />
             </Link>
-            <span>{h1}</span>
+            <span>{name}</span>
           </div>
           {/* Date */}
           <div className={styles.date}>
@@ -166,16 +163,13 @@ const City: React.FC<any> = props => {
               md={24}
               lg={24}
               xl={16}
-              className={styles.colArticle}
+              className={styles.colCity}
             >
-              {/* Desc */}
-              <div className={styles.desc}>
-                <p>{desc}</p>
-              </div>
               {/* Content */}
-              <div className={styles.content}>
-                <div dangerouslySetInnerHTML={createMarkup()} />
-              </div>
+              <div className={styles.content}>Температура: {temperature} F</div>
+              <div className={styles.content}>Ощущается как: {feelsLike} F</div>
+              <div className={styles.content}>Давление: {pressure} bar</div>
+              <div className={styles.content}>Влажность: {humidity} %</div>
             </Col>
 
             {/* Aside info */}
@@ -186,7 +180,7 @@ const City: React.FC<any> = props => {
                 md={24}
                 lg={24}
                 xl={8}
-                className={styles.colArticle}
+                className={styles.colCity}
               >
                 {isFetchingCategories ? (
                   <div
@@ -206,12 +200,12 @@ const City: React.FC<any> = props => {
 
                     <ul>
                       {resultCategoriesState.map((item: any) => {
-                        const { id, h1 } = item;
+                        const { id, name } = item;
 
                         return (
                           <li key={id}>
                             <Link to={`${CITIES_URL}?filter-category-id=${id}`}>
-                              {h1}
+                              {name}
                             </Link>
                           </li>
                         );

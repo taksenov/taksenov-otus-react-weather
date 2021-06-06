@@ -41,7 +41,7 @@ const CitiesList: React.FC<IProps> = props => {
               md={24}
               lg={24}
               xl={8}
-              className={styles.colArticle}
+              className={styles.colCity}
             >
               <CityCard id={id} header={name} shortText={country} />
             </Col>

@@ -1,1 +1,0 @@
-export { DropContainerStyled } from './styles';

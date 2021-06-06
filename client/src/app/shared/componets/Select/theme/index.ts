@@ -1,1 +1,0 @@
-export { SelectStyled } from './styles';

@@ -11,7 +11,7 @@ import {
   citiesFailure,
   citiesSecondRequest,
   citiesSecondResult,
-  // citiesCityRequest,
+  citiesCityRequest,
   citiesCitySuccess,
   citiesCityFailure,
   citiesCityResult,
@@ -26,7 +26,7 @@ import {
   citiesSecondFilteredResult,
 } from '../duck';
 
-import { citiesList, dataArticle } from '../selectors';
+import { citiesList, dataCity } from '../selectors';
 
 import { safe } from '../../../../core/state/utils/safe/saga';
 import { onError } from '../../../../core/state/utils/onError/saga';
@@ -113,12 +113,12 @@ export function* checkSecondResult(
   const { payload } = action;
 
   if (E.isRight(payload)) {
-    const resivedArticles: any = yield select(citiesList);
+    const resivedCitys: any = yield select(citiesList);
     const { right: successData } = payload;
     const dataRes = get(successData, 'data', []) || [];
     const data = Array.isArray(dataRes) ? dataRes : [];
     const payloadTmp = {
-      data: [...resivedArticles, ...data],
+      data: [...resivedCitys, ...data],
     };
 
     yield put({
@@ -149,12 +149,12 @@ export function* checkSecondFilteredResult(
   const { payload } = action;
 
   if (E.isRight(payload)) {
-    const resivedArticles: any = yield select(citiesList);
+    const resivedCitys: any = yield select(citiesList);
     const { right: successData } = payload;
     const dataRes = get(successData, 'data', []) || [];
     const data = Array.isArray(dataRes) ? dataRes : [];
     const payloadTmp = {
-      data: [...resivedArticles, ...data],
+      data: [...resivedCitys, ...data],
     };
 
     yield put({
@@ -170,31 +170,32 @@ export function* checkSecondFilteredResult(
   }
 } // checkSecondFilteredResult =========
 
-// export function* getArticleData(): any {
-//   const articleRes = yield call(citiesAPI.getDataArticle);
+export function* getCityData(action: any): any {
+  const { payload } = action;
+  const articleRes = yield call(citiesAPI.getDataCity, payload);
 
-//   yield put({
-//     type: citiesCityResult.toString(),
-//     payload: createResultV2(articleRes),
-//   });
-// } // getArticleData =========
+  yield put({
+    type: citiesCityResult.toString(),
+    payload: createResultV2(articleRes),
+  });
+} // getCityData =========
 
-export function* checkArticleResult(
+export function* checkCityResult(
   action: IResultEiterAction,
 ): IterableIterator<any> {
   const { payload } = action;
 
   if (E.isRight(payload)) {
-    const cachedArticles: any = yield select(dataArticle);
+    const cachedCitys: any = yield select(dataCity);
     const { right: successData } = payload;
     const dataRes = get(successData, 'data', { id: -1 }) || { id: -1 };
     const { id } = dataRes;
 
     let payloadTmp = {
-      ...cachedArticles,
+      ...cachedCitys,
     };
 
-    if (!cachedArticles[id]) {
+    if (!cachedCitys[id]) {
       payloadTmp = {
         ...payloadTmp,
         [id]: dataRes,
@@ -212,7 +213,7 @@ export function* checkArticleResult(
       type: citiesCityFailure.toString(),
     });
   }
-} // checkArticleResult =========
+} // checkCityResult =========
 
 // Root Saga
 export default function* rootSaga() {
@@ -244,17 +245,17 @@ export default function* rootSaga() {
     }),
   );
 
-  // yield takeLatest(
-  //   citiesCityRequest,
-  //   safe(onError, getArticleData, {
-  //     terminator: citiesCityFailure,
-  //   }),
-  // );
+  yield takeLatest(
+    citiesCityRequest,
+    safe(onError, getCityData, {
+      terminator: citiesCityFailure,
+    }),
+  );
 
   // Either checkers
   yield takeEvery(citiesResult, safe(onError, checkResult));
   yield takeEvery(citiesSecondResult, safe(onError, checkSecondResult));
-  yield takeEvery(citiesCityResult, safe(onError, checkArticleResult));
+  yield takeEvery(citiesCityResult, safe(onError, checkCityResult));
   yield takeEvery(citiesFilteredResult, safe(onError, checkFilteredResult));
   yield takeEvery(
     citiesSecondFilteredResult,

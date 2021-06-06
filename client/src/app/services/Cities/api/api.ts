@@ -7,7 +7,7 @@ const versionOnePrefix = environment.API_VERSION_ONE_PREFIX;
 const apiKey = environment.API_KEY;
 
 /**
- * Articles API
+ * Cities API
  */
 export default {
   /**
@@ -26,11 +26,11 @@ export default {
    *
    * @returns
    */
-  getDataArticle(data: any) {
-    const { token, id } = data;
+  getDataCity(data: any) {
+    const { id } = data;
 
-    return AxiosInstance(token).get(
-      `${apiPrefix}${versionOnePrefix}/blog/articles/${id}`,
+    return AxiosInstance('').get(
+      `${apiPrefix}data/${versionOnePrefix}/weather?id=${id}&appid=${apiKey}`,
     );
   },
 
