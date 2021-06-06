@@ -1,1 +1,0 @@
-export { soketServerMsgContract } from './ChatListSupport';
