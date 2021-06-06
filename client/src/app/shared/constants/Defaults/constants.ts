@@ -39,12 +39,8 @@ export const LAYOUT_MAXIMUM_ALLOWABLE_WIDTH = 1580;
 export const CAROUCEL_MOVE_THRESHOLD = 0.07;
 
 // NB: Захардкоженные в админке типы масок
-// ISF-179: Подробности в таске https://www.wrike.com/open.htm?id=604730578
 export const PASSPORT_MASK_TYPE = 1;
 export const PHONE_MASK_TYPE = 2;
 export const PHONE_CUSTOM_MASK_TYPE = 3;
 
 export const DFLT_DATE_PLUG = '1900-01-01T00:00:01.000Z';
-
-export const COME_FROM_COMMON = 'COME_FROM_COMMON';
-export const COME_FROM_LAWYER = 'COME_FROM_LAWYER';

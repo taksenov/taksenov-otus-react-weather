@@ -18,7 +18,7 @@ import { SiderStyled } from './theme';
 import styles from './Sidebar.module.scss';
 
 import {
-  FEEDBACKS_URL,
+  FAVOURITES_URL,
   CITIES_URL,
 } from '../../../shared/constants/Routes/constants';
 
@@ -104,16 +104,16 @@ const Sidebar: React.FC<IProps> = props => {
         </Menu.Item>
 
         {/* Избранное */}
-        <Menu.Item key={FEEDBACKS_URL}>
+        <Menu.Item key={FAVOURITES_URL}>
           <div className={styles.menuImageWrapper}>
-            {selectedMenuItemKey === `${FEEDBACKS_URL}` ? (
+            {selectedMenuItemKey === `${FAVOURITES_URL}` ? (
               <img src={commentActiveImage} alt="🗨" />
             ) : (
               <img src={commentImage} alt="🗨" />
             )}
           </div>
 
-          <Link to={FEEDBACKS_URL}>Избранное</Link>
+          <Link to={FAVOURITES_URL}>Избранное</Link>
         </Menu.Item>
       </Menu>
     </SiderStyled>
