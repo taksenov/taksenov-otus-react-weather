@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'core-js'; // Provides polyfills necessary for a full ES2015+ environment
 import * as React from 'react';
 import ReactDOM from 'react-dom';

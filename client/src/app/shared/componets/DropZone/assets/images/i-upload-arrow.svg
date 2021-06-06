@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="53px" height="53px" viewBox="0 0 53 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43 (38999) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 7</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-7">
+            <g transform="translate(26.500000, 26.500000) scale(1, -1) translate(-26.500000, -26.500000) ">
+                <rect id="Rectangle-243" fill="#e0eeee" opacity="0.949999988" x="0" y="0" width="53" height="53" rx="26.5"></rect>
+                <path d="M26.5,12.985 L26.5,39.485" id="Line" stroke="#66acac" stroke-width="2"></path>
+                <polyline id="Line-Copy-6" stroke="#66acac" stroke-width="2" transform="translate(26.529033, 35.017748) scale(-1, 1) translate(-26.529033, -35.017748) " points="35.8330658 30.21 26.5580658 39.867225 17.225 30.1682703"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

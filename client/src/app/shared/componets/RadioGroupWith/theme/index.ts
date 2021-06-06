@@ -1,0 +1,1 @@
+export { RadioGroupStyled } from './styles';

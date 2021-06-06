@@ -1,1 +1,1 @@
-export { createResult, createResultV2 } from './createResult';
+export { createResultV2 } from './createResult';

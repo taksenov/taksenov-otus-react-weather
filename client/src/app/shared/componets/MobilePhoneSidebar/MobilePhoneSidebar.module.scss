@@ -1,0 +1,35 @@
+// MobilePhoneSidebar
+
+// Variables
+// =========
+
+// Selectors
+.sider {
+  box-shadow: 1px 0 5px 0 rgba(13, 14, 72, 0.05),
+    1px 0 1px 0 rgba(13, 14, 72, 0.03);
+  z-index: 100;
+}
+
+.closeButton {
+  display: inline-block;
+
+  & span {
+    margin-bottom: 0;
+    margin-left: -5px;
+    margin-top: 2px;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-color: #ffffff;
+  }
+}
+
+.buttonHidden {
+  display: none !important;
+}
+// =========
+
+// MediaQueries
+// ============

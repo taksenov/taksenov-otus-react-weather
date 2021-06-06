@@ -1,0 +1,29 @@
+// CreditRatingGraph
+
+// Variables
+// =========
+
+// Selectors
+
+.tooltip {
+  display: flex;
+  justify-content: center;
+  height: 23px;
+  width: 40px;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.label {
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 23px;
+  text-align: center;
+}
+// =========
+
+// MediaQueries
+// ============

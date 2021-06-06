@@ -1,0 +1,1 @@
+export { socketInitDataContract } from './initRes';

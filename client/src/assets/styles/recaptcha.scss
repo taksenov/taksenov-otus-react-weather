@@ -1,0 +1,5 @@
+// NB: Скрывает бейдж google-recaptcha-v3
+// IDEA: https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed
+.grecaptcha-badge {
+  visibility: hidden;
+}

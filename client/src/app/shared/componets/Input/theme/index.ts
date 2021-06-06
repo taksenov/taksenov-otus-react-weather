@@ -1,0 +1,1 @@
+export { InputStyled } from './styles';

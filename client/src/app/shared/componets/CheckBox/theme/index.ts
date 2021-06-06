@@ -1,0 +1,1 @@
+export { CheckBoxStyled } from './styles';

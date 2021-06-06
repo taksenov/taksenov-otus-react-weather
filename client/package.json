@@ -24,6 +24,7 @@
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.8.0",
+    "core-js": "^3.14.0",
     "crypto-js": "^4.0.0",
     "fp-ts": "^2.8.3",
     "framer-motion": "^2.9.3",
@@ -107,8 +108,16 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
-    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "license": "MIT"
 }

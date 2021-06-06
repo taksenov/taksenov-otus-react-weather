@@ -1,0 +1,1 @@
+export { HeaderStyled } from './styles';
