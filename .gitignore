@@ -38,8 +38,4 @@ yarn-error.log*
 /server
 /mongo
 /nginx
-/client/src/app/states/Articles
-/client/src/app/services/Articles
-/client/src/app/shared
-/client/src/app/contracts
 
