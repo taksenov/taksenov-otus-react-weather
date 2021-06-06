@@ -6,7 +6,6 @@ import Dropzone from 'react-dropzone';
 import get from 'lodash/get';
 import toLower from 'lodash/toLower';
 import { Button } from 'antd';
-import { Translate } from 'react-localize-redux';
 
 import styles from './DropZone.module.scss';
 import { DropContainerStyled } from './theme';
@@ -167,9 +166,7 @@ class DropZone extends React.Component<IProps> {
                   })}
                 >
                   <input {...getInputProps()} />
-                  <p className={styles.DropZoneHeader}>
-                    <Translate id="shared_componets_drop_zone_upload_header" />
-                  </p>
+                  <p className={styles.DropZoneHeader}>Загрузка</p>
                   {userFilesStatus ? (
                     <>
                       {userFiles.map((item: any) => {
@@ -256,7 +253,7 @@ class DropZone extends React.Component<IProps> {
             onClick={this.handleSend}
             disabled={!isFormReady}
           >
-            <Translate id="shared.componets.helpselectedchatfooter.send" />
+            Отправить
           </Button>
         </div>
       </>

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { Translate } from 'react-localize-redux';
 
 import { formatSum } from '../../utils/formatSum.helper';
 
@@ -33,9 +32,7 @@ const BalanceBadge = (props: IProps): any => {
 
   return (
     <ButtonStyled>
-      <p>
-        <Translate id="shared.componets.balancebadge.mybalance" />
-      </p>
+      <p>Мой баланс</p>
       <div
         className={cx(styles.badge, {
           [styles.success]: isSucces,

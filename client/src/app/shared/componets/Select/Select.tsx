@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import * as React from 'react';
 import cx from 'classnames';
-import { Translate } from 'react-localize-redux';
 
 import styles from './Select.module.scss';
 import { SelectStyled } from './theme';
@@ -81,7 +80,7 @@ const Select: React.FC<IProps> = props => {
 
           return (
             <Option key={id} value={id}>
-              {isSetI18N ? <Translate id={`${label}`} /> : <>{label}</>}
+              <>{label}</>
             </Option>
           );
         })}

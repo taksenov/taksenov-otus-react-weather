@@ -38,7 +38,7 @@ class AppRouter extends Component {
             path={CITIES_URL}
             component={CitiesViewLoadable}
           />
-          <Redirect to={NOOP_URL} />
+          <Redirect to={CITIES_URL} />
         </Switch>
       </ConnectedRouter>
     );

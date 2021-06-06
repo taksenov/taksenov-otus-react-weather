@@ -1,7 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 
 import * as React from 'react';
-import { Translate } from 'react-localize-redux';
 
 import starFullImage from './assets/images/starFull.svg';
 import starEmptyImage from './assets/images/starEmpty.svg';
@@ -34,12 +33,7 @@ const StarsRating: React.FC<IProps> = props => {
             alt="star"
           />
         ))}
-        {count >= 0 && (
-          <span>
-            {count}{' '}
-            <Translate id="src_app_shared_componets_credit_rating_element_feedbacks" />
-          </span>
-        )}
+        {count >= 0 && <span>{count} отзывов</span>}
       </div>
     </>
   );

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Menu, Input } from 'antd';
 import { Link } from 'react-router-dom';
-import { Translate } from 'react-localize-redux';
 
 import { SearchOutlined } from '@ant-design/icons';
 
@@ -62,7 +61,7 @@ const Sidebar: React.FC<IProps> = props => {
     >
       {!isMobile && (
         <div className={styles.logoWrapper}>
-          <a href="/">
+          <a href="/cities">
             <img
               src={logoImage}
               className={styles.logo}
@@ -74,20 +73,14 @@ const Sidebar: React.FC<IProps> = props => {
       )}
 
       {isMobile && !TEMP_UNDER_CONSTRUCTION && (
-        <Translate>
-          {({ translate }) => (
-            <div className={styles.searchInputWrapper}>
-              <Input
-                style={{ margin: 0, marginRight: '20px' }}
-                className={styles.searchInput}
-                placeholder={translate(
-                  'shared.componets.sidebar.searchinput',
-                ).toString()}
-                suffix={<SearchOutlined />}
-              />
-            </div>
-          )}
-        </Translate>
+        <div className={styles.searchInputWrapper}>
+          <Input
+            style={{ margin: 0, marginRight: '20px' }}
+            className={styles.searchInput}
+            placeholder="Поиск..."
+            suffix={<SearchOutlined />}
+          />
+        </div>
       )}
 
       <Menu

@@ -33,7 +33,7 @@ const MobilePhoneHeader: React.FC = () => {
       }}
     >
       {/* Logo */}
-      <a className={cx(styles.logo)} href="/">
+      <a className={cx(styles.logo)} href="/cities">
         <img src={logoImage} alt="Logo" />
       </a>
     </HeaderStyled>

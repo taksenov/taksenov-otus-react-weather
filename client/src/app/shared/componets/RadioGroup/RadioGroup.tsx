@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Radio } from 'antd';
-import { Translate } from 'react-localize-redux';
 
 import styles from './RadioGroup.module.scss';
 import { RadioGroupStyled } from './theme';
@@ -51,7 +50,7 @@ const RadioGroup: React.FC<IProps> = props => {
                 color: mainTextColor === '' ? '#66acac' : mainTextColor,
               }}
             >
-              {isSetI18N ? <Translate id={`${label}`} /> : <>{label}</>}
+              <>{label}</>
             </Radio.Button>
           );
         })}

@@ -30,15 +30,15 @@ import { CITIES_URL } from '../../constants/Routes/constants';
 import arrowLeftImage from './assets/images/arrowLeft.svg';
 
 interface IState {
-  articleID: number;
-  dataArticleState: Record<string, any>;
+  cityID: number;
+  dataCityState: Record<string, any>;
   errorForceRedirect: boolean;
   resultCategoriesState: any[];
 }
 
 const initState: IState = {
-  articleID: -1,
-  dataArticleState: {},
+  cityID: -1,
+  dataCityState: {},
   errorForceRedirect: false,
   resultCategoriesState: [],
 };
@@ -55,13 +55,9 @@ const City: React.FC<any> = props => {
   const isFetchingCategories = useSelector(isFetchingCategoriesSelector);
 
   const [state, setState] = React.useState(initState);
-  const {
-    articleID,
-    dataArticleState,
-    errorForceRedirect,
-    resultCategoriesState,
-  } = state;
-  const currentArticle = get(dataArticleState, `${articleID}`, {}) || {};
+  const { cityID, dataCityState, errorForceRedirect, resultCategoriesState } =
+    state;
+  const currentArticle = get(dataCityState, `${cityID}`, {}) || {};
   const { date, h1 = '', desc = '', content = '' } = currentArticle;
 
   const formatted = get(date, 'formatted', '') || '';
@@ -70,7 +66,7 @@ const City: React.FC<any> = props => {
   React.useEffect(() => {
     setState(prevState => ({
       ...prevState,
-      articleID: ID,
+      cityID: ID,
     }));
   }, [ID]);
 
@@ -78,25 +74,25 @@ const City: React.FC<any> = props => {
   React.useEffect(() => {
     setState(prevState => ({
       ...prevState,
-      dataArticleState: dataArticle,
+      dataCityState: dataArticle,
     }));
   }, [dataArticle]);
 
   // Проверить ID статьи, если ее нет в кеше, то загрузить с бекенда
   React.useEffect(() => {
-    if (articleID < 0) {
+    if (cityID < 0) {
       return undefined;
     }
 
-    if (!dataArticleState[articleID]) {
+    if (!dataCityState[cityID]) {
       dispatch({
         type: citiesCityRequest.toString(),
-        payload: { id: articleID },
+        payload: { id: cityID },
       });
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [articleID]);
+  }, [cityID]);
 
   // Проверить результат на наличие ошибок
   React.useEffect(() => {
@@ -176,8 +172,6 @@ const City: React.FC<any> = props => {
               <div className={styles.desc}>
                 <p>{desc}</p>
               </div>
-              {/* Image */}
-              <div className={styles.imageWrapper} />
               {/* Content */}
               <div className={styles.content}>
                 <div dangerouslySetInnerHTML={createMarkup()} />
