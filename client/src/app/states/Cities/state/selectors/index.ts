@@ -1,0 +1,16 @@
+export {
+  isFetching,
+  headers,
+  totalPages,
+  currentPage,
+  data,
+  citiesList,
+  isFetchingSecond,
+  isFetchingCity,
+  dataCity,
+  isAlreadyChashed,
+  result,
+  resultCity,
+  isFetchingCategories,
+  resultCategories,
+} from './selectors';

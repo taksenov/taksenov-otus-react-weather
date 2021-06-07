@@ -1,0 +1,41 @@
+// MobilePhoneFooter
+
+// Variables
+// =========
+.addButtonBlock {
+  box-sizing: border-box;
+  height: 44px;
+  width: 74px;
+  border: 1px solid rgba(102, 172, 172, 0.08);
+  border-radius: 22px;
+  background-color: #66acac;
+
+  & span {
+    margin-bottom: 0;
+    margin-left: -6px;
+    margin-top: 2px;
+  }
+}
+
+.buttonBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.labelImage {
+  margin-bottom: 5px;
+}
+
+.labelText {
+  color: #73797f;
+  font-family: 'Open Sans';
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 14px;
+}
+
+// =========
+
+// MediaQueries
+// ============

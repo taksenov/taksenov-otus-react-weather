@@ -1,0 +1,15 @@
+# команда запуска
+# docker-compose -f docker-mongo-express.yml build
+# docker-compose -f docker-mongo-express.yml up
+# docker-compose -f docker-mongo-express.yml ps
+# docker-compose -f docker-mongo-express.yml down
+
+version: '3'
+
+services:
+  # Для беглого просмотра данных в БД
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081

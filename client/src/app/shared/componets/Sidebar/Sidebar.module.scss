@@ -1,0 +1,68 @@
+// Sidebar
+
+// Variables
+// =========
+
+// Selectors
+
+.sidebar.sidebar {
+  padding-left: 20px;
+
+  .ant-menu-inline {
+    .ant-menu-item::after {
+      border-right: 0;
+    }
+  }
+
+  flex: 0 0 225px !important;
+  max-width: 225px !important;
+  min-width: 225px !important;
+  width: 225px !important;
+}
+
+.logoWrapper {
+  height: 38px;
+  width: auto;
+  margin-top: 10px;
+  margin-bottom: 26px;
+}
+
+.logo {
+  width: auto;
+}
+
+.mobileBadges {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.searchInputWrapper {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.searchInput {
+  box-sizing: border-box;
+  height: 40px;
+  width: 182px;
+  border: 1px solid rgba(214, 220, 227, 0.5);
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+
+.menuImageWrapper {
+  width: 27px;
+  height: 16px;
+  position: relative;
+
+  & img {
+    position: absolute;
+    top: 0px;
+  }
+}
+// =========
+
+// MediaQueries
+// ============

@@ -1,0 +1,32 @@
+// MobilePhoneHeader
+
+// Variables
+// =========
+
+.backward {
+  display: flex;
+  flex: 0 1 20px;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.avatar {
+  display: flex;
+}
+
+.logo {
+  display: flex;
+}
+
+.logoHelpChat {
+  flex: 1;
+}
+
+.avatarHelpChat {
+  flex: 0 1 32px;
+}
+
+// =========
+
+// MediaQueries
+// ============

@@ -1,0 +1,30 @@
+// CitiesList
+
+// Variables
+// =========
+
+// Selectors
+.citiesList {
+  padding: 0px 20px 20px 20px;
+  background-color: #f9fafc;
+}
+
+.colCity {
+  margin-bottom: 15px;
+}
+
+// =========
+
+// MediaQueries
+// Universal mobile size
+@media (max-width: 1199.98px) {
+  .citiesList {
+    padding: 0px 10px;
+    background-color: #f9fafc;
+  }
+
+  .colCity {
+    margin-bottom: 10px;
+  }
+}
+// ============

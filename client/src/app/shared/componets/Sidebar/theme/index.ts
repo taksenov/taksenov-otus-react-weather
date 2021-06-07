@@ -1,0 +1,1 @@
+export { SiderStyled } from './styles';
