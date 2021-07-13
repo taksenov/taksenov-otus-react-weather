@@ -7,7 +7,6 @@ import cors from 'cors';
 import http from 'http';
 
 import settings from './config';
-import './config/passport';
 
 import { CreateDbConnection } from './utils/dbUtils';
 
