@@ -5,12 +5,14 @@
 # IDEA: 09-10-2019 добавлена сборка frontend сервера на cra, который крутится на 3000 порту
 # и поддерживает пересборку по сохранению файлов в проекте
 # Визуально сервер по прежнему открывается через http://127.0.0.1:80/
+# ИЛИ Визуально сервер по прежнему открывается через http://0.0.0.0:80/
 
 # IDEA: 25-05-2020 на macOS докер работает через жопу, поэтому или линукс или машина с линуксом, к которой macОS подключается как клиент по sshfs
 
 # команда запуска
 # docker-compose -f docker-compose-develop.yml build
 # docker-compose -f docker-compose-develop.yml up
+# docker-compose -f docker-compose-develop.yml up -d // without logs
 # docker-compose -f docker-compose-develop.yml ps
 # docker-compose -f docker-compose-develop.yml down
 
@@ -18,7 +20,8 @@
 # Ссылка: https://github.com/sass/node-sass/releases
 # IDEA: ВНИМАНИЕ! Если запускается на машине с Windows, MacOS
 # то нужно скопировать из ./client/temp/* --> ./client/node_modules/node-sass/vendor/*
-# Команда копирования `cp -r ./client/temp/linux-x64-83/ ./client/node_modules/node-sass/vendor/`
+# Команда копирования win `cp -r ./client/temp/linux-x64-83/ ./client/node_modules/node-sass/vendor/`
+# Команда копирования mac `cp -r ./client/temp/ ./client/node_modules/node-sass/vendor/`
 # Иначе ругнется на различные сборки OS для node-sass
 
 # Очистка не используемых контейнеров

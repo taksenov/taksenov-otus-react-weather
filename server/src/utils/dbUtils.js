@@ -8,6 +8,8 @@ export async function CreateDbConnection(host, port, db) {
   // by default, you need to set it to false.
   mongoose.set('useFindAndModify', false);
 
+  mongoose.set('useUnifiedTopology', true);
+
   // Connect to DB
   try {
     await mongoose.connect(`mongodb://${host}:${port}/${db}`, {
