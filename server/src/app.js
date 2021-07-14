@@ -5,6 +5,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import http from 'http';
+import graphqlHTTP from 'express-graphql';
 
 import settings from './config';
 
@@ -26,6 +27,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Router
 // app.use('/api', routes.authRouter);
+
+// GraphQL
+app.use('/graphql', graphqlHTTP({}));
 
 app.disable('x-powered-by');
 
