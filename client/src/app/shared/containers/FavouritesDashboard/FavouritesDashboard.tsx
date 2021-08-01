@@ -45,32 +45,33 @@ export const FavouritesDashboard = () => {
       {/* Header */}
       <div className={styles.header}>
         <span>Погода</span>
-        {isMobile ? (
+        {isMobile && (
           <div className={styles.subHeaderMobile}>
             <span>в избранных городах</span>
           </div>
-        ) : (
-          <div className={styles.subHeader}>
-            <span>Погода в избранных городах</span>
-          </div>
         )}
-
-        {/* Cities List */}
-        <div className={styles.citiesList}>
-          {loading ? (
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Preloader size="large" />
-            </div>
-          ) : (
-            <FavouriteCitiesList data={data} />
-          )}
+      </div>
+      {!isMobile && (
+        <div className={styles.subHeader}>
+          <span>в избранных городах</span>
         </div>
+      )}
+
+      {/* Cities List */}
+      <div className={styles.citiesList}>
+        {loading ? (
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Preloader size="large" />
+          </div>
+        ) : (
+          <FavouriteCitiesList data={data} />
+        )}
       </div>
     </>
   );

@@ -27,7 +27,6 @@ const FavouriteCitiesList: React.FC<IProps> = props => {
           marginRight: '0px',
         }}
       >
-        LOL
         {data.map((item: any) => {
           const id = item?.cityID ?? -1;
           const name = item?.name ?? -1;
@@ -43,11 +42,7 @@ const FavouriteCitiesList: React.FC<IProps> = props => {
               xl={8}
               className={styles.colCity}
             >
-              <FavouriteCityCard
-                id={id}
-                header={name}
-                shortText={temperature}
-              />
+              <FavouriteCityCard header={name} shortText={temperature} />
             </Col>
           );
         })}
