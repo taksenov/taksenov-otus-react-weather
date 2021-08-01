@@ -17,7 +17,8 @@ const app = express();
 // HTTP Stuff
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
-app.use(cors({ origin: '*' }));
+// app.use(cors({ origin: '*' }));
+app.use(cors());
 
 CreateDbConnection(settings.db.host, settings.db.port, settings.db.name);
 

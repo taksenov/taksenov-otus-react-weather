@@ -15,7 +15,7 @@ import ErrorBoundary from '../../shared/componets/ErrorBoundary';
 import styles from './Favourites.module.scss';
 
 import { DEVICE_NETBOOKS_WIDTH } from '../../shared/constants/Defaults/constants';
-import { CITIES_URL } from '../../shared/constants/Routes/constants';
+import { FAVOURITES_URL } from '../../shared/constants/Routes/constants';
 
 const { Content } = Layout;
 
@@ -53,9 +53,6 @@ export class Favourites extends Component {
       <RootLayout>
         <Content
           style={{
-            // NB: убранно из-за необходимости получать данные по инфинит скроллу
-            // height:
-            //   isCDM && isMobile ? 'calc(100vh - 48px)' : 'calc(100vh - 60px)',
             backgroundColor: '#f9fafc',
           }}
         >
@@ -72,13 +69,16 @@ export class Favourites extends Component {
                 {/* Dashboard */}
                 <Route
                   exact
-                  path={`${CITIES_URL}`}
+                  path={`${FAVOURITES_URL}`}
                   component={FavouritesDashboard}
                 />
                 {/* Current City */}
-                <Route path={`${CITIES_URL}/:ID`} component={City} />
+                <Route path={`${FAVOURITES_URL}/:ID`} component={City} />
 
-                <Redirect path={`${CITIES_URL}*`} to={`${CITIES_URL}`} />
+                <Redirect
+                  path={`${FAVOURITES_URL}*`}
+                  to={`${FAVOURITES_URL}`}
+                />
               </Switch>
 
               {/* Mobile Footer Helper */}

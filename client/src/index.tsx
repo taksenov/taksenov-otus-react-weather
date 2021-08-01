@@ -4,13 +4,7 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { LocalizeProvider } from 'react-localize-redux';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql,
-} from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 import { store } from './app/core/state';
 
@@ -22,7 +16,7 @@ import './index.css';
 import './App.scss';
 
 const client = new ApolloClient({
-  uri: 'http://lpc-node-server:8080/graphq',
+  uri: 'http://0.0.0.0:8080/graphql',
   cache: new InMemoryCache(),
 });
 
