@@ -38,6 +38,7 @@ const Query = new GraphQLObjectType({
   name: 'Query',
   fields: {
     favouriteCity: {
+      description: 'Город из избранного',
       type: FavouriteType,
       args: { id: { type: GraphQLID } },
       resolve(parent, { id }) {
@@ -45,6 +46,7 @@ const Query = new GraphQLObjectType({
       },
     },
     favouriteCities: {
+      description: 'Список городов добавленных в избранное',
       type: new GraphQLList(FavouriteType),
       resolve() {
         return FavouriteModel.find({});
