@@ -8,10 +8,9 @@ import http from 'http';
 import { graphqlHTTP } from 'express-graphql';
 
 import settings from './config';
+import { schema } from './schema';
 
 import { CreateDbConnection } from './utils/dbUtils';
-
-// import * as routes from './routes';
 
 const app = express();
 
@@ -25,11 +24,8 @@ CreateDbConnection(settings.db.host, settings.db.port, settings.db.name);
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Router
-// app.use('/api', routes.authRouter);
-
 // GraphQL
-app.use('/graphql', graphqlHTTP({}));
+app.use('/graphql', graphqlHTTP({ schema, graphiql: true }));
 
 app.disable('x-powered-by');
 
