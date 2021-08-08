@@ -8,28 +8,25 @@ import http from 'http';
 import { graphqlHTTP } from 'express-graphql';
 
 import settings from './config';
+import { schema } from './schema';
 
 import { CreateDbConnection } from './utils/dbUtils';
-
-// import * as routes from './routes';
 
 const app = express();
 
 // HTTP Stuff
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
-app.use(cors({ origin: '*' }));
+// app.use(cors({ origin: '*' }));
+app.use(cors());
 
 CreateDbConnection(settings.db.host, settings.db.port, settings.db.name);
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Router
-// app.use('/api', routes.authRouter);
-
 // GraphQL
-app.use('/graphql', graphqlHTTP({}));
+app.use('/graphql', graphqlHTTP({ schema, graphiql: true }));
 
 app.disable('x-powered-by');
 

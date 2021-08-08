@@ -4,6 +4,7 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { LocalizeProvider } from 'react-localize-redux';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 import { store } from './app/core/state';
 
@@ -14,12 +15,19 @@ import * as serviceWorker from './serviceWorker';
 import './index.css';
 import './App.scss';
 
+const client = new ApolloClient({
+  uri: 'http://0.0.0.0:8080/graphql',
+  cache: new InMemoryCache(),
+});
+
 ReactDOM.render(
-  <Provider store={store}>
-    <LocalizeProvider>
-      <ApplicationWrapper />
-    </LocalizeProvider>
-  </Provider>,
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+      <LocalizeProvider>
+        <ApplicationWrapper />
+      </LocalizeProvider>
+    </Provider>
+  </ApolloProvider>,
   document.getElementById('root'),
 );
 

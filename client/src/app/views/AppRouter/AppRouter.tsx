@@ -4,9 +4,14 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import { history } from '../../core/state';
 
-import { CITIES_URL, NOOP_URL } from '../../shared/constants/Routes/constants';
+import {
+  CITIES_URL,
+  NOOP_URL,
+  FAVOURITES_URL,
+} from '../../shared/constants/Routes/constants';
 
 import CitiesViewLoadable from '../Cities';
+import FavouritesViewLoadable from '../Favourites';
 
 /**
  * Private Router. Show content only for the authorized users
@@ -37,6 +42,13 @@ class AppRouter extends Component {
             permited
             path={CITIES_URL}
             component={CitiesViewLoadable}
+          />
+
+          {/* Favourites */}
+          <PrivateRoute
+            permited
+            path={FAVOURITES_URL}
+            component={FavouritesViewLoadable}
           />
           <Redirect to={CITIES_URL} />
         </Switch>

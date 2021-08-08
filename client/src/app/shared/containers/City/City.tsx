@@ -7,7 +7,7 @@ import { Link, Redirect } from 'react-router-dom';
 import get from 'lodash/get';
 import { CalendarOutlined } from '@ant-design/icons';
 import moment from 'moment';
-import { Row, Col } from 'antd';
+import { Row, Col, Button } from 'antd';
 import * as E from 'fp-ts/lib/Either';
 
 import Preloader from '../../componets/Preloader';
@@ -216,6 +216,17 @@ const City: React.FC<any> = props => {
               </Col>
             )}
           </Row>
+
+          {/* TODO: Реализовать надпись, когда уже в избранном */}
+          <Button
+            shape="round"
+            type="default"
+            style={{
+              height: '38px',
+            }}
+          >
+            В избранное
+          </Button>
         </div>
       )}
     </>

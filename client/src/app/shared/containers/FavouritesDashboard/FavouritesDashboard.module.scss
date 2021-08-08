@@ -1,0 +1,556 @@
+// FavouritesDashboard
+
+// Variables
+// =========
+
+// Selectors
+
+.ratingsWrapper {
+  padding: 20px;
+  background-color: #f9fafc;
+}
+
+.ratingCalculationWrapper {
+  padding-right: 20px !important;
+}
+
+.header {
+  padding: 20px 20px 10px 20px;
+  background-color: #f9fafc;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  & span {
+    color: #37404b;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 36px;
+    letter-spacing: 0;
+    line-height: 42px;
+    margin-right: 20px;
+  }
+}
+
+.subHeader {
+  padding: 0px 20px 20px 20px;
+  background-color: #f9fafc;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & span {
+    color: #73797f;
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    letter-spacing: -0.09px;
+    line-height: 20px;
+  }
+}
+
+.subHeaderMobile {
+  padding: 0px;
+  margin-bottom: 15px;
+  background-color: #f9fafc;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & span {
+    color: #73797f !important;
+    font-family: Roboto, sans-serif !important;
+    font-size: 13px !important;
+    letter-spacing: -0.09px !important;
+    line-height: 20px !important;
+    margin-bottom: 0px !important;
+  }
+}
+
+.offersHeader {
+  padding: 20px 20px 15px 20px;
+  background-color: #f9fafc;
+
+  & span {
+    height: 32px;
+    width: 100%;
+    color: #37404b;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0;
+    line-height: 32px;
+  }
+}
+
+.tabsWrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #f9fafc;
+}
+
+.contentSection {
+  padding: 0px 0px 15px 0px;
+  background-color: #f9fafc;
+}
+
+.searchFormWrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+.dataWrapper {
+  background-color: #f9fafc;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.radioGroupWrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+.debtsListWrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #f9fafc;
+}
+
+.debtCardsWrapper {
+  padding-bottom: 15px;
+}
+
+.debtCard {
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 5px 0 rgba(13, 14, 72, 0.05),
+    0 1px 1px 0 rgba(13, 14, 72, 0.03);
+  padding: 20px;
+
+  :nth-child(n) {
+    max-width: unset !important;
+    margin: unset !important;
+  }
+}
+
+.infoListItemsWrapper {
+  position: relative;
+
+  .infoItemWrapper:nth-child(n) {
+    max-width: unset !important;
+    margin-bottom: 12px !important;
+  }
+  .infoItemWrapper:nth-child(1) {
+    max-width: calc(100% - 160px) !important;
+    margin-bottom: 12px !important;
+  }
+  .infoItemWrapper:last-child {
+    margin-bottom: 0px !important;
+  }
+
+  .infoItemWrapper span:nth-child(1) {
+    margin-bottom: 4px !important;
+  }
+}
+
+.infoItemWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: unset !important;
+  margin: unset !important;
+}
+
+.infoItemHeader {
+  max-width: unset !important;
+  margin: unset !important;
+  margin-bottom: 4px !important;
+  color: #37404b;
+  font-family: Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.09px;
+  line-height: 20px;
+}
+
+.infoItemSubHeader {
+  max-width: unset !important;
+  margin: unset !important;
+  margin-bottom: 12px !important;
+  color: #73797f;
+  font-family: Roboto, sans-serif;
+  font-size: 13px;
+  letter-spacing: -0.09px;
+  line-height: 20px;
+}
+
+.sumBadge {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 180px;
+  border-radius: 2px;
+  background-color: #f9fafc;
+  position: absolute;
+  top: 0;
+  right: 24px;
+  padding: 8px;
+}
+
+.sumBadgeH {
+  color: #37404b;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 16px;
+}
+
+.sumBadgeInfo {
+  color: #e26b84;
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 30px;
+}
+
+.plusMinusWrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 10px;
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.actionWrapper {
+  margin-bottom: 20px;
+}
+
+.citiesList {
+  padding: 0px 20px 20px 20px;
+  background-color: #f9fafc;
+}
+
+.colCity {
+  margin-bottom: 15px;
+}
+
+// =========
+
+// MediaQueries
+// Universal mobile size
+@media (max-width: 1199.98px) {
+  .header.header {
+    padding-bottom: 0px;
+  }
+
+  .citiesList {
+    padding: 0px 10px;
+    background-color: #f9fafc;
+  }
+
+  .colCity {
+    margin-bottom: 10px;
+  }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  .ratingsWrapper {
+    padding: 15px;
+  }
+
+  .ratingCalculationWrapper {
+    padding-right: 0px !important;
+  }
+
+  .offersHeader {
+    padding: 0px 15px 10px 15px;
+    background-color: #f9fafc;
+
+    & span {
+      height: 28px;
+      width: 100%;
+      color: #37404b;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0;
+      line-height: 28px;
+    }
+  }
+
+  .header {
+    padding: 15px 15px 8px 15px;
+    background-color: #f9fafc;
+    display: flex;
+    flex-direction: column;
+
+    & span {
+      width: 100%;
+      color: #37404b;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0;
+      line-height: 28px;
+      margin-bottom: 8px;
+      margin-right: unset;
+    }
+  }
+
+  .searchFormWrapper {
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+  }
+
+  .dataWrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+  }
+
+  .radioGroupWrapper {
+    padding-top: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 15px;
+  }
+
+  .debtCardsWrapper {
+    padding-bottom: 15px;
+  }
+
+  .debtsListWrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .ratingsWrapper {
+    padding: 15px;
+  }
+
+  .ratingCalculationWrapper {
+    padding-right: 0px !important;
+  }
+
+  .offersHeader {
+    padding: 0px 15px 10px 15px;
+    background-color: #f9fafc;
+
+    & span {
+      height: 28px;
+      width: 100%;
+      color: #37404b;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0;
+      line-height: 28px;
+    }
+  }
+
+  .header {
+    padding: 15px 15px 8px 15px;
+    background-color: #f9fafc;
+    display: flex;
+    flex-direction: column;
+
+    & span {
+      width: 100%;
+      color: #37404b;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 24px;
+      letter-spacing: 0;
+      line-height: 34px;
+      margin-bottom: 8px;
+      margin-right: unset;
+    }
+  }
+
+  .searchFormWrapper {
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+  }
+
+  .dataWrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+  }
+
+  .radioGroupWrapper {
+    padding-top: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 15px;
+  }
+
+  .debtCardsWrapper {
+    padding-bottom: 15px;
+  }
+
+  .debtsListWrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .ratingsWrapper {
+    padding: 15px;
+  }
+
+  .ratingCalculationWrapper {
+    padding-right: 15px !important;
+  }
+
+  .offersHeader {
+    padding: 0px 15px 10px 15px;
+    background-color: #f9fafc;
+
+    & span {
+      height: 28px;
+      width: 100%;
+      color: #37404b;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0;
+      line-height: 28px;
+    }
+  }
+
+  .header {
+    padding: 15px 15px 8px 15px;
+    background-color: #f9fafc;
+    display: flex;
+    flex-direction: column;
+
+    & span {
+      width: 100%;
+      color: #37404b;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 24px;
+      letter-spacing: 0;
+      line-height: 34px;
+      margin-bottom: 8px;
+      margin-right: unset;
+    }
+  }
+
+  .searchFormWrapper {
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+  }
+
+  .dataWrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+  }
+
+  .radioGroupWrapper {
+    padding-top: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 15px;
+  }
+
+  .debtCardsWrapper {
+    padding-bottom: 15px;
+  }
+
+  .debtsListWrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .ratingsWrapper {
+    padding: 15px;
+  }
+
+  .ratingCalculationWrapper {
+    padding-right: 15px !important;
+  }
+
+  .offersHeader {
+    padding: 0px 15px 10px 15px;
+    background-color: #f9fafc;
+
+    & span {
+      height: 28px;
+      width: 100%;
+      color: #37404b;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0;
+      line-height: 28px;
+    }
+  }
+
+  .header {
+    padding: 15px 15px 8px 15px;
+    background-color: #f9fafc;
+    display: flex;
+    flex-direction: column;
+
+    & span {
+      width: 100%;
+      color: #37404b;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 24px;
+      letter-spacing: 0;
+      line-height: 34px;
+      margin-bottom: 8px;
+      margin-right: unset;
+    }
+  }
+
+  .searchFormWrapper {
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+  }
+
+  .dataWrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+  }
+
+  .radioGroupWrapper {
+    padding-top: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 15px;
+  }
+
+  .debtCardsWrapper {
+    padding-bottom: 15px;
+  }
+
+  .debtsListWrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+}
+// ============
